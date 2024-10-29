@@ -27,7 +27,7 @@ function App() {
           onClick={fetchData}
           className="bg-blue-500 border-b-blue-600 border-b-2 text-white font-bold px-4 py-2 rounded-lg mt-10"
         >
-          Meeee
+          Fetch
         </button>
       </div>
     </>
