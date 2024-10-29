@@ -1,5 +1,8 @@
 # Developing
 
+> [!IMPORTANT]  
+> Anytime you see `cs332g??`, substitute with the username from canvas
+
 ### Environment setup (only need to do once):
 
 1. Use `npm i` to install all node modules
@@ -8,7 +11,7 @@
 
 1. Run `mysql -u root` to enter mysql as the root user and create an account
 
-1. Create your local database & user with the following commands (change usernames, passwords, and database names as you'd like):
+1. Create your local database & user with the following commands (change usernames, passwords, and database names as you'd like. Do not change 'localhost' and remember what you put for each entry):
 
 ```sql
 CREATE DATABASE database_name;
@@ -78,12 +81,27 @@ export default defineConfig({
 
 3. These all should route to `http://localhost:8080`, as this is the port we opened the php server on
 
-4. Access the php code on your sites js by fetching the url with the following string:
+4. Run the php code and get the output on your site with js by fetching the url with the following string, replacing the parameters (which can be empty if there are none) and the filename as needed:
 
 ```js
+// Declare route & parameters
 const php_file_name = "api.php";
-const parameters = "?table=users&id=3&name=max";
-const request_url = window.location.href + php_file_name + parameters;
+const params = {
+  table: "users",
+};
+
+// Generate request url
+const formatted_params =
+  !params || Object.keys(params).length === 0
+    ? ""
+    : "?" +
+      Object.entries(params)
+        .map(
+          ([key, value]) =>
+            `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+        )
+        .join("&");
+const request_url = "/" + php_file_name + formatted_params;
 ```
 
 ### Uploading to serverhost:

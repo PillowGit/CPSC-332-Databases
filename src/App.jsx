@@ -4,15 +4,30 @@ import { useState } from "react";
 
 function App() {
   // Page url
-  const url = window.location.href;
   // Pulled info
   const [display, setDisplay] = useState("no data yet");
   // Pull data test
   async function fetchData() {
     // Pull from "url/api.php" with parameter table="users"
-    const req_url = url + "api.php?table=users";
-    console.log(`Requesting data from ${req_url}`);
-    fetch(req_url)
+    const php_file_name = "api.php";
+    const params = {
+      table: "users",
+    };
+    // Generate request url
+    const formatted_params =
+      !params || Object.keys(params).length === 0
+        ? ""
+        : "?" +
+          Object.entries(params)
+            .map(
+              ([key, value]) =>
+                `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+            )
+            .join("&");
+    const request_url = "/" + php_file_name + formatted_params;
+    console.log(request_url);
+    console.log(`Requesting data from ${request_url}`);
+    fetch(request_url)
       .then((response) => response.text())
       .then((data) => setDisplay(data));
   }
