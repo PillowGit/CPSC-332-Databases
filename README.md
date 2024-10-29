@@ -3,7 +3,7 @@
 > [!IMPORTANT]  
 > Anytime you see `cs332g??`, substitute with the username from canvas
 
-### Environment setup (only need to do once):
+## Environment setup (only need to do once):
 
 1. Use `npm i` to install all node modules
 
@@ -52,7 +52,7 @@ $conn->close();
 ?>
 ```
 
-### How to run & host site/server locally
+## How to run & host site/server locally
 
 1. Start a local development server with `npm run dev`
 
@@ -61,7 +61,7 @@ $conn->close();
 > [!NOTE]
 > This must be done from project root, and this requires the php command which is not installed by default. Install with `brew install php` or `sudo apt-get install php`
 
-### Adding a new php file:
+## Adding a new php file:
 
 1. Create a new php file at the project root
 
@@ -104,7 +104,7 @@ const formatted_params =
 const request_url = "/" + php_file_name + formatted_params;
 ```
 
-### Uploading to serverhost:
+## Uploading to ecs server:
 
 1. Use `npm run build` to compile all html, css, and js files together
 
