@@ -11,14 +11,15 @@ function App() {
   return (
     <>
       <div className="w-full min-h-full absolute flex flex-col items-center justify-center left-0 top-0">
-        <h1 className="font-bold text-5xl mt-8 mb-16 underline text-stone-50">332 Term Project</h1>
+        <h1 className="font-bold text-5xl mt-8 mb-16 underline text-stone-50">
+          332 Term Project
+        </h1>
         <Table table={table} />
         <ProfessorInfo setTable={setTable}/>
         <CheckGrades setTable={setTable}/>
         <CheckSections setTable={setTable}/>
         <CheckStudent setTable={setTable}/>
       </div>
-
     </>
   );
 }
