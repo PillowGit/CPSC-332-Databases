@@ -10,10 +10,11 @@ if ($conn->connect_error) {
 }
 
 // Arguments
-$table = $_GET["table"];
+$course_no = $_GET["course_no"];
+$section_no = $_GET["section_no"];
 
 // SQL query
-$sql = "SELECT * FROM " . $table;
+$sql = "SELECT Grade, COUNT(*) AS GradeCount FROM Enrollment WHERE CourseNo = " . $course_no . " AND SectionNo = " . $section_no . " GROUP BY Grade ORDER BY CASE WHEN Grade = 'A' THEN 1 WHEN Grade = 'B' THEN 2 WHEN Grade = 'C' THEN 3 WHEN Grade = 'D' THEN 4 WHEN Grade = 'E' THEN 5 WHEN Grade = 'F' THEN 6 ELSE 7 END;";
 
 $result = $conn->query($sql);
 

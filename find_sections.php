@@ -10,10 +10,10 @@ if ($conn->connect_error) {
 }
 
 // Arguments
-$table = $_GET["table"];
+$course_no = $_GET["course_no"];
 
 // SQL query
-$sql = "SELECT * FROM " . $table;
+$sql = "SELECT S.SectionNo, S.Classroom, S.MeetingDays, S.BeginTime, S.EndTime, COUNT(E.StudentID) AS NumberOfStudents FROM Section S LEFT JOIN Enrollment E ON S.SectionNo = E.SectionNo AND S.CourseNo = E.CourseNo WHERE S.CourseNo IN (" . $course_no . ") GROUP BY S.SectionNo, S.Classroom, S.MeetingDays, S.BeginTime, S.EndTime;";
 
 $result = $conn->query($sql);
 

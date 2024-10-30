@@ -10,10 +10,10 @@ if ($conn->connect_error) {
 }
 
 // Arguments
-$table = $_GET["table"];
+$student_id = $_GET["student_id"];
 
 // SQL query
-$sql = "SELECT * FROM " . $table;
+$sql = "SELECT C.CourseTitle, E.Grade FROM Student S JOIN Enrollment E ON S.StudentID = E.StudentID JOIN Course C ON E.CourseNo = C.CourseNo WHERE S.StudentID = " . $student_id . ";";
 
 $result = $conn->query($sql);
 
