@@ -6,7 +6,14 @@ import CheckSections from "./forms/CheckSections";
 import CheckStudent from "./forms/CheckStudent";
 
 function App() {
-  const [table, setTable] = useState([{null: "null"}]);
+  const [table, updateTable] = useState([{ null: "null" }]);
+  function setTable(table) {
+    if (table.length > 0) {
+      updateTable(table);
+    } else {
+      updateTable([{ null: "no data found" }]);
+    }
+  }
 
   return (
     <>
@@ -15,10 +22,10 @@ function App() {
           332 Term Project
         </h1>
         <Table table={table} />
-        <ProfessorInfo setTable={setTable}/>
-        <CheckGrades setTable={setTable}/>
-        <CheckSections setTable={setTable}/>
-        <CheckStudent setTable={setTable}/>
+        <ProfessorInfo setTable={setTable} />
+        <CheckGrades setTable={setTable} />
+        <CheckSections setTable={setTable} />
+        <CheckStudent setTable={setTable} />
       </div>
     </>
   );
